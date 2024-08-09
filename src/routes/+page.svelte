@@ -15,6 +15,7 @@
 	import ValueNode from '$lib/components/ValueNode.svelte';
 	import ProductNode from '$lib/components/ProductNode.svelte';
 
+	// TODO: Plug Publicodes logic and profit
 	const nodeTypes: NodeTypes = {
 		valueNode: ValueNode,
 		productNode: ProductNode,
