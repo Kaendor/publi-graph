@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { writable } from 'svelte/store';
+	import { derived, writable } from 'svelte/store';
 	import {
 		SvelteFlow,
 		Controls,
@@ -43,6 +43,16 @@
 
 	// same for edges
 	const edges = writable([]);
+
+	$: rules = derived(nodes, ($nodes) => {
+		return $nodes.map((node) => {
+			return {
+				id: node.id,
+				type: node.type,
+				data: node.data,
+			};
+		});
+	});
 
 	const snapGrid: [number, number] = [25, 25];
 </script>
