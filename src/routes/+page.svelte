@@ -9,7 +9,6 @@
 		type NodeTypes,
 	} from '@xyflow/svelte';
 
-	// 👇 this is important! You need to import the styles for Svelte Flow to work
 	import '@xyflow/svelte/dist/style.css';
 	import '../app.css';
 	import ValueNode from '$lib/components/ValueNode.svelte';
