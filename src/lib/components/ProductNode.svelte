@@ -18,19 +18,24 @@
 		type: 'target',
 	});
 
-	console.log(connections);
+	console.log({ connections });
 
 	$: nodesData = useNodesData($connections.map((c) => c.source));
-	console.log(nodesData);
+	console.log({ nodesData });
 	$: total = $nodesData?.reduce((acc, nodeData) => acc * Number(nodeData.data.value), 1);
+
+	// L'opération propre au produit est une multiplication
+	// des noeuds entrants
+	// Pour faire cette opération il faut donc obtenir tous les noeuds entrants, les transformer en règles, puis faire le produit de toutes les règles obtenues ainsi
 </script>
 
 <NodeWrapper label={data.label} {id}>
 	<div>
+		Produit:
 		{#if !$nodesData || $nodesData?.length === 0}
-			<div>0</div>
+			0
 		{:else}
-			<div>{total}</div>
+			{total}
 		{/if}
 	</div>
 	<Handle

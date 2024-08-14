@@ -2,25 +2,22 @@
 	import {
 		Handle,
 		Position,
-		useHandleConnections,
+		// useHandleConnections,
 		useSvelteFlow,
 		type NodeProps,
 	} from '@xyflow/svelte';
 	import NodeWrapper from './NodeWrapper.svelte';
+	import { dataToRule } from '$lib';
 
 	type $$Props = NodeProps;
 
 	export let data: $$Props['data'];
 	export let id: $$Props['id'];
 	const { updateNodeData } = useSvelteFlow();
-	const connections = useHandleConnections({
-		nodeId: id,
-		type: 'source',
-	});
 
 	function updateNode(e) {
-		console.log('updateNode', id, e.currentTarget.value);
-		console.log('connections', connections);
+		const rule = dataToRule(data);
+		console.log('RuleUpdate', rule);
 		updateNodeData(id, { value: e.currentTarget.value });
 	}
 
